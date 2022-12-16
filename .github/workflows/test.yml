@@ -25,7 +25,11 @@ jobs:
       # Runs a single command using the runners shell to install the npm packages
       - name: Test
         run: npm install
+
+
       # Runs a single command using the runners shell to run the tests
       - name: Test
+        env: 
+          credentials: ${{ secrets.MONGO_TEST_URI }}
         run: npm run test
 
