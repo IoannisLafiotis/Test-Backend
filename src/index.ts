@@ -33,7 +33,7 @@ app.post('/users', async (req: any, res: any) => {
 
 if (process.env.CONDITION === 'dev') {
   mongoose.connect(
-    'mongodb+srv://IoannisLafiotis:h74t0lSzfeHkYML5@cluster0.hpq7s.mongodb.net/test?retryWrites=true&w=majority',
+    process.env.MONGO_DEV_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

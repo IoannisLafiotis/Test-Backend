@@ -9,7 +9,7 @@ const request = supertest(app);
 describe('User API endpoints', () => {
   beforeAll(async () => {
     await mongoose.connect(
-      'mongodb+srv://IoannisLafiotis:h74t0lSzfeHkYML5@cluster0.hpq7s.mongodb.net/testingphase?retryWrites=true&w=majority',
+      process.env.MONGO_TEST_URI,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

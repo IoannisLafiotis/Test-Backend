@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.(spec|test).ts' --exec 'ts-node -r tsconfig-paths/register' src/index.ts",
-    "test": "jest",
+    "test": "jest --forceExit",
     "start:nodemon": "nodemon",
     "lint": "eslint . --ext .ts --fix",
     "docker": "docker run -d --name test-p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=test -r MONGO_INITDB_ROOT_PASSWORD=test"
