@@ -33,7 +33,7 @@ describe('User API endpoints', () => {
         email: testUser.email,
         birthDate: testUser.birthDate,
       };
-      await request.post('/users').send({...newUser});
+      await request.post('/users').send(newUser);
     }
     const res = await request.get('/users');
     expect(res.statusCode).toBe(200);
@@ -54,6 +54,17 @@ describe('User API endpoints', () => {
       .send({ name: 'Author', email: '', birthDate: '2001-07-25T14:10:26.113Z', adresse: 'adrese3' });
     expect(res.statusCode).toBe(400);
     expect(res.body.message).toBe('All of the fields must be present! Try again!');
+  });
+
+  test('POST | fail when there is an existent user with the same email!', async () => {
+    
+    await request.post('/users').send(testUsers[0]);
+    
+    const res = await request
+      .post('/users')
+      .send({ name: 'Author', email: 'email@mail.com', birthDate: '2001-07-25T14:10:26.113Z', adresse: 'adrese3' });
+    expect(res.statusCode).toBe(400);
+    expect(res.body.message).toBe('Email adress already exists!');
   });
 
   test('POST | save user to database with user data', async () => {

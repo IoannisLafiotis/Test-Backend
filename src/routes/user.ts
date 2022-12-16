@@ -14,6 +14,10 @@ userRouter.post('/users', async (req: any, res: any) => {
   if (propArray.some((o) => user[o] === undefined || user[o] === '')) {
     return res.status(400).send({ message: 'All of the fields must be present! Try again!' });
   }
+  const existingUser = User.findOne({ email: user.email });
+  if (existingUser) {
+    return res.status(400).send({ message: 'Email adress already exists!' });
+  }
   const newUser = User.build(user);
   await newUser.save();
   return res.status(201).send(newUser);
