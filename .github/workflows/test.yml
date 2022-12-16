@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v3
       # Runs a single command using the runners shell to install the npm packages
       - name: Test
-        run: npm run test
+        run: npm install
       # Runs a single command using the runners shell to run the tests
       - name: Test
         run: npm run test
