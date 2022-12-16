@@ -30,6 +30,7 @@ jobs:
       # Runs a single command using the runners shell to run the tests
       - name: Test
         env: 
-          credentials: ${{ secrets.MONGO_TEST_URI }}
+          MONGO_TEST_URI: ${{ secrets.MONGO_TEST_URI }}
+          CONDITION: ${{ secrets.CONDITION }}
         run: npm run test
 
